@@ -4,7 +4,6 @@ const initialState = {
     isHome: true,
     currentPerson: 0,
     currentPersonData: null,
-    userAuthentication: ""
 }
 
 export const applicationSlice = createSlice({
@@ -23,13 +22,10 @@ export const applicationSlice = createSlice({
         updateCurrentPersonData: (state, action) => {
             state.currentPersonData = action.payload
         },
-        updateUserAuthentication: (state, action) => {
-            state.userAuthentication = action.payload;
-        }
     }
 })
 
 
-export const { setHome, removeHome, updateCurrentPerson, updateCurrentPersonData, updateUserAuthentication } = applicationSlice.actions
+export const { setHome, removeHome, updateCurrentPerson, updateCurrentPersonData } = applicationSlice.actions
 
 export default applicationSlice.reducer
