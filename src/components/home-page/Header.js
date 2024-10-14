@@ -17,7 +17,7 @@ const Header = () => {
     useEffect(() => {
         if (location.pathname === '/') {
             dispatch(setHome());
-        } else if (location.pathname === '/message') {
+        } else {
             dispatch(removeHome());
         }
     }, [location, dispatch]);
@@ -32,7 +32,7 @@ const Header = () => {
                     isHome ?
                         <Person2Icon className='header-element text-white  text-[32px] screen1:text-md screen2:text-lg' fontSize='large' onClick={() => { navigate('/') }} />
                         :
-                        <ArrowBackIosIcon className='header-element text-white  text-[32px] screen1:text-md screen2:text-lg' fontSize='large' onClick={() => { navigate('/') }} />
+                        <ArrowBackIosIcon className='header-element text-white  text-[32px] screen1:text-md screen2:text-lg' fontSize='large' onClick={() => { navigate(-1) }} />
                 }
             </IconButton>
             <img onClick={() => { navigate('/') }} src='https://media.tenor.com/mTt2UyQmvuwAAAAj/logo.gif' className='-mt-[35px] w-[80px] screen1:w-[110px] screen1:-mt-[50px] screen2:w-[150px] screen2:-mt-[70px]' />
