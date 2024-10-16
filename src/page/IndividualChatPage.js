@@ -146,13 +146,13 @@ const IndividualChatPage = () => {
         <div className='w-full h-[70vh] screen1:h-[66vh] screen2:h-[65vh] relative border-t-0 overflow-x-hidden overflow-y-auto bg-black text-white'>
           <div className='overflow-hidden'>
             <div className=' child flex justify-start m-5'>
-              <span className='bg-[#313131] px-[20px] py-[5px] rounded-lg text-[12px] screen1:text-[17px]'>hello</span>
+              <span className='bg-[#313131] px-[20px] py-[5px] rounded-lg text-[17px]'>hello</span>
             </div>
             <div className='flex justify-end m-5'>
-              <span className='bg-[#313131] px-[20px] py-[5px] rounded-lg text-[12px] screen1:text-[17px]'>hii</span>
+              <span className='bg-[#313131] px-[20px] py-[5px] rounded-lg text-[17px]'>hii</span>
             </div>
             <div className='flex justify-end m-5'>
-              <span className='bg-[#313131] px-[20px] py-[5px] rounded-lg text-[12px] screen1:text-[17px]'>what is up dude , how are you i hope you are fine</span>
+              <span className='bg-[#313131] px-[20px] py-[5px] rounded-lg text-[17px]'>what is up dude , how are you i hope you are fine</span>
             </div>
 
             {isAudioSent && audioUrl && (
@@ -190,9 +190,9 @@ const IndividualChatPage = () => {
           </div>
         </div>
 
-        <div className='w-full text-white flex items-center justify-between px-[19px] pb-[20px] pt-[15px] bg-black rounded-b-[10px]'>
-          <input type='text' placeholder='enter the message...' className='text-[12px] w-[70%] screen1:text-[16px] screen1:w-[76%] screen2:w-[82%] screen2:text-[18px] focus-none bg-[#313131] py-2 px-3 rounded-lg outline-none border-none' />
-          <div className='text-[16px] screen1:text-[23px] screen2:text-[25px] flex justify-between item-center gap-[12px]'>
+        <div className='w-full text-white flex items-center justify-between px-[10px] pb-[20px] pt-[15px] bg-black rounded-b-[10px]'>
+          <input type='text' placeholder='enter the message...' className='text-[18px] w-[68%] screen1:w-[76%] screen2:w-[82%] focus-none bg-[#313131] py-2 px-3 rounded-lg outline-none border-none' />
+          <div className='text-[20px] screen1:text-[23px] screen2:text-[25px] flex justify-between item-center gap-[12px]'>
             <IoCamera className='cursor-pointer' onClick={() => { handleCameraClick(); setShowAudioControls(false); setAttachmentDisplay(false) }} />
             <IoAttachSharp
               className={`cursor-pointer ${cameraOpen ? 'cursor-pointer pointer-events-none' : ''}`}
@@ -217,7 +217,7 @@ const IndividualChatPage = () => {
 
         {
           attachmentDysplay &&
-          <div className='flex justify-evenly items-center text-[20px] screen1:text-[23px] screen2:text-[25px] text-white absolute w-[150px] h-[40px] screen1:w-[200px] screen1:h-[50px] bg-[#313131] rounded-lg -bottom-12 right-5 screen1:-bottom-1 screen1:right-10'>
+          <div className='flex justify-evenly items-center text-[25px] text-white absolute w-[150px] h-[50px] screen1:w-[200px] bg-[#313131] rounded-lg -bottom-12 right-5 screen1:-bottom-1 screen1:right-10'>
             <label htmlFor="file-upload" className='cursor-pointer'>
               <IoIosDocument aria-label="Upload document" />
               <input id="file-upload" type='file' className='hidden' onChange={handleFileChange} />
@@ -273,7 +273,7 @@ const IndividualChatPage = () => {
                     }}>Retake</button>
                   </>
                 ) : (
-                  <button className='text-white mt-5 bg-[#313131] p-2 rounded-lg text-[12px] screen1:text-[18px]' onClick={handleCaptureClick}>Click to capture</button>
+                  <button className='text-white mt-5 bg-[#313131] p-2 px-10 rounded-lg text-[15px] screen1:text-[18px]' onClick={handleCaptureClick}>Click</button>
                 )}
               </div>
               <canvas ref={canvasRef} className='hidden' />
@@ -284,14 +284,14 @@ const IndividualChatPage = () => {
         {/* audio recording - UI */}
 
         {showAudioControls && (
-          <div className={`flex flex-col justify-center items-center gap-2 text-white absolute w-[150px] h-[150px] screen1:w-[200px] ${audioUrl ? 'screen1:h-[160px]' : 'screen1:h-[140px]'} bg-[#313131] rounded-lg -bottom-5 right-10`}>
-            <RxCross2 className='absolute top-2 right-2 cursor-pointer' onClick={() => { setAudioUrl(null); setShowAudioControls(false) }} />
-            <button className='bg-black text-[7px] screen1:text-[12px] text-white font-bold py-2 px-4 rounded' onClick={() => { handleStartRecording(); setRecordingIcon(true) }}>Start Recording</button>
-            <button className='bg-black text-[7px] screen1:text-[12px] text-white font-bold py-2 px-4 rounded' onClick={() => {
+          <div className={`flex flex-col justify-center items-center gap-2 text-white absolute w-[180px] h-[180px] screen1:w-[200px] bg-[#313131] rounded-lg -bottom-5 right-10`}>
+            <RxCross2 className='absolute screen1:top-2 top-1 right-1 screen1:right-2 cursor-pointer' onClick={() => { setAudioUrl(null); setShowAudioControls(false) }} />
+            <button className='bg-black text-[14px] text-white font-bold py-2 px-4 rounded' onClick={() => { handleStartRecording(); setRecordingIcon(true) }}>Start Recording</button>
+            <button className='bg-black text-[14px] text-white font-bold py-2 px-4 rounded' onClick={() => {
               handleStopRecording();
               setRecordingIcon(false)
             }}>Stop Recording</button>
-            <button className='bg-black text-[7px] screen1:text-[12px] text-white font-bold py-2 px-4 rounded' onClick={() => {
+            <button className='bg-black text-[14px] text-white font-bold py-2 px-4 rounded' onClick={() => {
               handleStopRecording();
               handleSendRecording();
               setIsAudioSent(true);
