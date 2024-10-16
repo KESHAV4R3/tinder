@@ -20,9 +20,7 @@ const Header = () => {
         } else {
             dispatch(removeHome());
         }
-    }, [location, dispatch]);
-
-
+    }, [location]);
 
     return (
         <div className='flex justify-between p-[10px] screen1:p-[20px] items-center'>
