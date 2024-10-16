@@ -5,7 +5,6 @@ import Card from '../components/home-page/Card'
 import database from '../Firebase/fireBase'
 import { Atom } from 'react-loading-indicators'
 import { updateCurrentPerson, updateCurrentPersonData } from '../redux/slices/applicationSlice'
-import { toast } from 'react-toastify'
 
 const Home = () => {
   const [data, setData] = useState([])

@@ -307,13 +307,6 @@ const IndividualChatPage = () => {
           </div>
         )}
 
-        {showRecordingUI && (
-          <div className='flex justify-end items-center gap-[10px] m-5'>
-            <RxCross2 onClick={() => { setAudioUrl(null); setAttachmentDisplay(false) }} className='cursor-pointer' />
-            <span className='rounded-lg'><audio className='h-[40px] w-[250px]' controls controlsList="nodownload" src={audioUrl} /></span>
-          </div>
-        )}
-
       </div>
     </div>
   )
