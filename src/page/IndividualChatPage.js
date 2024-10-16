@@ -14,6 +14,12 @@ const IndividualChatPage = () => {
   const location = useLocation();
   const { state } = location;
   const { name, profile } = state;
+  const [sendMessage, setSendMessage] = useState("");
+  const [sendMesDis, setSendMesDis] = useState(false);
+
+  function sendMes(event) {
+    setSendMessage(event.target.value);
+  }
 
   const [attachmentDysplay, setAttachmentDisplay] = useState(false);
   const [documentUpload, setDocumentUpload] = useState(null);
@@ -143,7 +149,7 @@ const IndividualChatPage = () => {
 
         </div>
 
-        <div className='w-full h-[66vh] screen1:h-[66vh] screen2:h-[65vh] relative border-t-0 overflow-x-hidden overflow-y-auto bg-black text-white'>
+        <div className='w-full h-[70vh] relative border-t-0 overflow-x-hidden overflow-y-auto bg-black text-white'>
           <div className='overflow-hidden'>
             <div className=' child flex justify-start m-5'>
               <span className='bg-[#313131] px-[20px] py-[5px] rounded-lg text-[17px]'>hello</span>
@@ -187,12 +193,18 @@ const IndividualChatPage = () => {
               </div>
             )}
 
+            {
+              sendMesDis && <div className=' child flex justify-end m-5'>
+                <span className='bg-[#313131] px-[20px] py-[5px] rounded-lg text-[17px]'>{sendMessage}</span>
+              </div>
+            }
+
           </div>
         </div>
 
         <div className='w-full text-white flex items-center justify-between px-[10px] pb-[20px] pt-[15px] bg-black rounded-b-[10px]'>
-          <input type='text' placeholder='enter the message...' className='text-[18px] w-[68%] screen1:w-[76%] screen2:w-[82%] focus-none bg-[#313131] py-2 px-3 rounded-lg outline-none border-none' />
-          <div className='text-[20px] screen1:text-[23px] screen2:text-[25px] flex justify-between item-center gap-[12px]'>
+          <input type='text' value={`${sendMesDis ? '' : `${sendMessage}`}`} placeholder='enter the message...' className='text-[18px] w-[68%] screen1:w-[76%] screen2:w-[82%] focus-none bg-[#313131] py-2 px-3 rounded-lg outline-none border-none' onChange={sendMes} />
+          <div className='text-[23px] screen2:text-[25px] flex justify-between item-center gap-[12px]'>
             <IoCamera className='cursor-pointer' onClick={() => { handleCameraClick(); setShowAudioControls(false); setAttachmentDisplay(false) }} />
             <IoAttachSharp
               className={`cursor-pointer ${cameraOpen ? 'cursor-pointer pointer-events-none' : ''}`}
@@ -204,11 +216,7 @@ const IndividualChatPage = () => {
             />
             <RiSendPlaneLine
               className={`cursor-pointer ${cameraOpen ? 'cursor-pointer pointer-events-none' : ''}`}
-              onClick={() => {
-                if (!cameraOpen) {
-                  setAttachmentDisplay(!attachmentDysplay);
-                }
-              }}
+              onClick={() => { setSendMesDis(true) }}
             />
           </div>
         </div>
@@ -284,7 +292,7 @@ const IndividualChatPage = () => {
         {/* audio recording - UI */}
 
         {showAudioControls && (
-          <div className={`flex flex-col justify-center items-center gap-2 text-white absolute w-[180px] h-[180px] screen1:w-[200px] bg-[#313131] rounded-lg -bottom-5 right-10`}>
+          <div className={`flex flex-col justify-center items-center gap-2 text-white absolute w-[180px] h-[180px] screen1:w-[200px] bg-[#313131] rounded-lg -bottom-[120px] right-5`}>
             <RxCross2 className='absolute screen1:top-2 top-1 right-1 screen1:right-2 cursor-pointer' onClick={() => { setAudioUrl(null); setShowAudioControls(false) }} />
             <button className='bg-black text-[14px] text-white font-bold py-2 px-4 rounded' onClick={() => { handleStartRecording(); setRecordingIcon(true) }}>Start Recording</button>
             <button className='bg-black text-[14px] text-white font-bold py-2 px-4 rounded' onClick={() => {
@@ -296,12 +304,6 @@ const IndividualChatPage = () => {
               handleSendRecording();
               setIsAudioSent(true);
             }}>Send Recording</button>
-            {audioUrl &&
-              <div className='flex flex-row text-white w-full justify-evenly'>
-                <RxCross2 className='cursor-pointer' onClick={() => setAudioUrl(null)} />
-                <audio className='h-[20px] w-[80%]' controls controlsList="nodownload" src={audioUrl} />
-              </div>
-            }
           </div>
         )}
 
