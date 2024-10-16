@@ -4,8 +4,8 @@ import ChatBox from '../components/chats/ChatBox'
 const MessagePage = () => {
 
   return (
-    <div className='flex justify-center items-center'>
-      <div className='h-[82vh] w-[90%] bg-[#15151861] rounded-lg flex flex-col items-center gap-[20px] p-[20px]'>
+    <div className='w-full flex justify-center items-center'>
+      <div className='h-[82vh] w-full bg-[#15151861] rounded-lg flex flex-col items-center gap-[20px] p-2 screen1:p-5'>
         <ChatBox
           name="Virat Kohli"
           message="what is up..."

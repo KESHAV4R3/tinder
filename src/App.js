@@ -12,7 +12,7 @@ function App() {
 
   return (
     <div className='h-[100vh] flex justify-center overflow-x-hidden overflow-y-hidden bg-black'>
-      <div div className='w-[90%] min-w-[300px] max-w-[800px] bg-gray-900 p-[10px]'>
+      <div div className='w-full min-w-[300px] max-w-[800px] bg-gray-900 p-[10px]'>
         <Header />
         <Routes>
           <Route path='/' element={<Home />} />

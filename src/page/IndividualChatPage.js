@@ -130,7 +130,7 @@ const IndividualChatPage = () => {
   };
 
   return (
-    <div className='w-[90%] h-[73%] m-auto -mt-[10px]'>
+    <div className='w-full h-[73%] m-auto -mt-[10px]'>
       <div className='w-full h-full relative'>
 
         <div className='relative w-full h-[12%] flex justify-start items-center rounded-t-[10px] gap-[50px] py-[10px] items-cent pl-[20px] screen1:pl-[50px] bg-gray-600'>
@@ -143,7 +143,7 @@ const IndividualChatPage = () => {
 
         </div>
 
-        <div className='w-full h-[95%] relative border-t-0 overflow-x-hidden overflow-y-auto bg-black text-white'>
+        <div className='w-full h-[70vh] screen1:h-[66vh] screen2:h-[65vh] relative border-t-0 overflow-x-hidden overflow-y-auto bg-black text-white'>
           <div className='overflow-hidden'>
             <div className=' child flex justify-start m-5'>
               <span className='bg-[#313131] px-[20px] py-[5px] rounded-lg text-[12px] screen1:text-[17px]'>hello</span>
@@ -191,7 +191,7 @@ const IndividualChatPage = () => {
         </div>
 
         <div className='w-full text-white flex items-center justify-between px-[19px] pb-[20px] pt-[15px] bg-black rounded-b-[10px]'>
-          <input type='text' placeholder='enter the message...' className='text-[12px] w-[55%] screen1:text-[16px] screen1:w-[68%] screen2:w-[75%] screen2:text-[18px] focus-none bg-[#313131] py-2 px-3 rounded-lg outline-none border-none' />
+          <input type='text' placeholder='enter the message...' className='text-[12px] w-[70%] screen1:text-[16px] screen1:w-[76%] screen2:w-[82%] screen2:text-[18px] focus-none bg-[#313131] py-2 px-3 rounded-lg outline-none border-none' />
           <div className='text-[16px] screen1:text-[23px] screen2:text-[25px] flex justify-between item-center gap-[12px]'>
             <IoCamera className='cursor-pointer' onClick={() => { handleCameraClick(); setShowAudioControls(false); setAttachmentDisplay(false) }} />
             <IoAttachSharp
@@ -217,7 +217,7 @@ const IndividualChatPage = () => {
 
         {
           attachmentDysplay &&
-          <div className='flex justify-evenly items-center text-[16px] screen1:text-[23px] screen2:text-[25px] text-white absolute w-[100px] h-[40px] screen1:w-[200px] screen1:h-[60px] bg-[#313131] rounded-lg -bottom-5 right-10'>
+          <div className='flex justify-evenly items-center text-[20px] screen1:text-[23px] screen2:text-[25px] text-white absolute w-[150px] h-[40px] screen1:w-[200px] screen1:h-[50px] bg-[#313131] rounded-lg -bottom-12 right-5 screen1:-bottom-1 screen1:right-10'>
             <label htmlFor="file-upload" className='cursor-pointer'>
               <IoIosDocument aria-label="Upload document" />
               <input id="file-upload" type='file' className='hidden' onChange={handleFileChange} />

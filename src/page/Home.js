@@ -35,11 +35,9 @@ const Home = () => {
               onSwipe={(direction) => {
                 if (direction === 'right') {
                   dispatch(updateCurrentPerson());
-                  toast.success("you liked it !! ", { autoClose: 1000 })
                 }
                 else if (direction === 'left') {
                   dispatch(updateCurrentPerson());
-                  toast.info("you disliked it ", { autoClose: 1000 })
                 }
               }} >
               <Card value={value} id={value.id} />
