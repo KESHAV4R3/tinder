@@ -143,7 +143,7 @@ const IndividualChatPage = () => {
 
         </div>
 
-        <div className='w-full h-[70vh] screen1:h-[66vh] screen2:h-[65vh] relative border-t-0 overflow-x-hidden overflow-y-auto bg-black text-white'>
+        <div className='w-full h-[66vh] screen1:h-[66vh] screen2:h-[65vh] relative border-t-0 overflow-x-hidden overflow-y-auto bg-black text-white'>
           <div className='overflow-hidden'>
             <div className=' child flex justify-start m-5'>
               <span className='bg-[#313131] px-[20px] py-[5px] rounded-lg text-[17px]'>hello</span>
@@ -217,7 +217,7 @@ const IndividualChatPage = () => {
 
         {
           attachmentDysplay &&
-          <div className='flex justify-evenly items-center text-[25px] text-white absolute w-[150px] h-[50px] screen1:w-[200px] bg-[#313131] rounded-lg -bottom-[120px] right-5 screen1:-bottom-[90px] screen1:right-5'>
+          <div className='flex justify-evenly items-center text-[25px] text-white absolute w-[150px] h-[50px] screen1:w-[200px] bg-[#313131] rounded-lg -bottom-[90px] right-5  screen1:right-5'>
             <label htmlFor="file-upload" className='cursor-pointer'>
               <IoIosDocument aria-label="Upload document" />
               <input id="file-upload" type='file' className='hidden' onChange={handleFileChange} />

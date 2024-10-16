@@ -23,7 +23,7 @@ const Header = () => {
     }, [location]);
 
     return (
-        <div className='flex justify-between p-[10px] screen1:p-[20px] items-center'>
+        <div className='flex justify-between -mt-[10px] p-[10px] screen1:p-[20px] items-center'>
 
             <IconButton style={{ color: '#E0E0E0' }} fontSize={250}>
                 {
