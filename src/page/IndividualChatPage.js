@@ -54,14 +54,14 @@ const IndividualChatPage = () => {
   const canvasRef = useRef(null);
 
   const handleCameraClick = () => {
-    setCameraOpen(true);
+    setCameraOpen(true); // Set the camera state to open
     navigator.mediaDevices.getUserMedia({ video: true })
       .then(stream => {
-        setMediaStream(stream);
-        videoRef.current.srcObject = stream;
-        videoRef.current.play();
+        setMediaStream(stream); // Set the media stream
+        videoRef.current.srcObject = stream; // Assign the stream to the video element
+        videoRef.current.play(); // Play the video
       })
-      .catch(() => alert('unable to open the camera'));
+      .catch(() => alert('Unable to open the camera')); // Handle errors
   };
 
   const handleCaptureClick = () => {
@@ -137,9 +137,9 @@ const IndividualChatPage = () => {
 
   return (
     <div className='w-full h-[60%] m-auto -mt-[10px]'>
-      <div className='w-full h-full relative'>
+      <div className='w-full h-full relative pb-20'>
 
-        <div className='relative w-full h-[12%] flex justify-start items-center rounded-t-[10px] gap-[50px] py-[10px] items-cent pl-[20px] screen1:pl-[50px] bg-gray-600'>
+        <div className='relative w-full h-[18%] flex justify-start items-center rounded-t-[10px] gap-[50px] py-[10px] items-cent pl-[20px] screen1:pl-[50px] bg-gray-600'>
           <img src={profile} className='rounded-full w-[35px] h-[35px] screen1:w-[52px] screen1:h-[52px]' />
           <p className='select-none text-white text-[17px] screen1:text-[22px]'>{name}</p>
           {
@@ -247,14 +247,25 @@ const IndividualChatPage = () => {
               <button className='absolute z-[100] top-3 right-12 screen1:right-20 cursor-pointer' onClick={(e) => {
                 e.preventDefault();
                 console.log('Cross button clicked');
+
+                // Check if mediaStream is defined and has tracks
                 if (mediaStream) {
-                  mediaStream.getTracks().forEach(track => track.stop());
-                  setMediaStream(null);
+                  const tracks = mediaStream.getTracks();
+                  if (tracks.length > 0) {
+                    tracks.forEach(track => {
+                      console.log('Stopping track:', track);
+                      track.stop(); // Stop each track
+                    });
+                  }
+                  setMediaStream(null); // Clear the media stream
+                } else {
+                  console.log('No media stream to stop');
                 }
-                setImageCapture(null);
-                setCameraOpen(false);
+
+                setImageCapture(null); // Clear the captured image
+                setCameraOpen(false); // Close the camera
               }}>
-                <RxCross2 className='text-[20px] text-black' />
+                <RxCross2 className='text-[20px] text-white' />
               </button>
 
               {imageCapture ? (
@@ -292,9 +303,9 @@ const IndividualChatPage = () => {
         {/* audio recording - UI */}
 
         {showAudioControls && (
-          <div className={`flex flex-col justify-center items-center gap-2 text-white absolute w-[180px] h-[180px] screen1:w-[200px] bg-[#313131] rounded-lg -bottom-[120px] right-5`}>
-            <RxCross2 className='absolute screen1:top-2 top-1 right-1 screen1:right-2 cursor-pointer' onClick={() => { setAudioUrl(null); setShowAudioControls(false) }} />
-            <button className='bg-black text-[14px] text-white font-bold py-2 px-4 rounded' onClick={() => { handleStartRecording(); setRecordingIcon(true) }}>Start Recording</button>
+          <div className={`flex flex-col justify-center items-center gap-2 text-white absolute w-[180px] h-[180px] ${audioUrl ? 'h-[200px]' : ''} screen1:w-[200px] bg-[#313131] rounded-lg -bottom-[120px] right-5`}>
+            <RxCross2 className={`absolute screen1:top-2 top-1 right-1 screen1:right-2 cursor-pointer `} onClick={() => { setAudioUrl(null); setShowAudioControls(false) }} />
+            <button className={`bg-black text-[14px] text-white font-bold py-2 px-4 rounded ${audioUrl ? 'mt-5' : ''}`} onClick={() => { handleStartRecording(); setRecordingIcon(true) }}>Start Recording</button>
             <button className='bg-black text-[14px] text-white font-bold py-2 px-4 rounded' onClick={() => {
               handleStopRecording();
               setRecordingIcon(false)
@@ -304,6 +315,14 @@ const IndividualChatPage = () => {
               handleSendRecording();
               setIsAudioSent(true);
             }}>Send Recording</button>
+
+            {audioUrl && (
+              <div className='flex justify-end items-center gap-[10px] m-5'>
+                <RxCross2 onClick={() => { setAudioUrl(null); setAttachmentDisplay(false) }} className={`${audioUrl ? '-mt-2' : ''} cursor-pointer`} />
+                <span className='rounded-lg'><audio className={`h-[20px] w-[160px] ${audioUrl ? '-mt-2' : ''}`} controls controlsList="nodownload" src={audioUrl} /></span>
+              </div>
+
+            )}
           </div>
         )}
 

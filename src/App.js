@@ -4,7 +4,6 @@ import MessagePage from './page/MessagePage'
 import IndividualChatPage from './page/IndividualChatPage'
 import Header from './components/home-page/Header';
 import ErrorPage from './page/ErrorPage'
-import Footer from './components/home-page/Footer';
 
 function App() {
 
@@ -17,12 +16,11 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/message'>
-            <Route path='' element={<MessagePage />} />
+            <Route index element={<MessagePage />} />
             <Route path=':name' element={<IndividualChatPage />} />
           </Route>
           <Route path='*' element={<ErrorPage />} />
         </Routes>
-        {location.pathname === '/' && <Footer />}
       </div>
     </div>
   );

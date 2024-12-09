@@ -2,8 +2,6 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
     isHome: true,
-    currentPerson: 0,
-    currentPersonData: null,
 }
 
 export const applicationSlice = createSlice({
@@ -16,16 +14,10 @@ export const applicationSlice = createSlice({
         removeHome: (state) => {
             state.isHome = false
         },
-        updateCurrentPerson(state) {
-            state.currentPerson++;
-        },
-        updateCurrentPersonData: (state, action) => {
-            state.currentPersonData = action.payload
-        },
     }
 })
 
 
-export const { setHome, removeHome, updateCurrentPerson, updateCurrentPersonData } = applicationSlice.actions
+export const { setHome, removeHome } = applicationSlice.actions
 
 export default applicationSlice.reducer

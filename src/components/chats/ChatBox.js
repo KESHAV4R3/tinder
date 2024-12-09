@@ -10,7 +10,7 @@ const ChatBox = ({ name, message, timeStamp, profile }) => {
     }
 
     return (
-        <div className='cursor-pointer select-none w-full flex justify-between items-center bg-[#ffffffc1] h-[60px] rounded-lg px-[10px] object-cover' onClick={openChat}>
+        <div className='cursor-pointer select-none w-full flex justify-between items-center bg-[#ffffffc1] h-[70px] rounded-lg px-[10px] object-cover' onClick={openChat}>
             <div className='flex gap-[16px]'>
                 <img src={profile} className='rounded-full w-[39px] h-[39px] screen1:w-[50px] screen1:h-[50px]' />
                 <div className='flex flex-col'>
