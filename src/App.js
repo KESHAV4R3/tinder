@@ -11,8 +11,8 @@ function App() {
   const location = useLocation();
 
   return (
-    <div className='h-[100vh] flex justify-center overflow-x-hidden overflow-y-hidden bg-black'>
-      <div div className='w-full min-w-[300px] max-w-[800px] bg-gray-900 p-[10px]'>
+    <div className='h-[100vh] flex justify-center overflow-x-hidden overflow-y-auto   screen1:bg-black '>
+      <div div className='w-full min-w-[300px] max-w-[800px] p-[10px] bg-gray-900'>
         <Header />
         <Routes>
           <Route path='/' element={<Home />} />

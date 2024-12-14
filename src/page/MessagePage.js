@@ -5,7 +5,7 @@ const MessagePage = () => {
 
   return (
     <div className='w-full flex justify-center items-center'>
-      <div className='h-[82vh] w-full bg-[#15151861] rounded-lg flex flex-col items-center gap-[20px] p-2 screen1:p-5'>
+      <div className='h-[90vh] w-full bg-[#15151861] rounded-lg flex flex-col items-center gap-[20px] p-2 screen1:p-5 mt-[20px]'>
         <ChatBox
           name="Virat Kohli"
           message="what is up..."

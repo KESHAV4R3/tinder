@@ -5,14 +5,14 @@ import { getAuth } from "firebase/auth";
 import { GoogleAuthProvider } from "firebase/auth";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyDt04qWUUYkRbKszzYdSlG3LMkD_RuA7HE",
-    authDomain: "tinder-clone-e9351.firebaseapp.com",
-    projectId: "tinder-clone-e9351",
-    storageBucket: "tinder-clone-e9351.appspot.com",
-    messagingSenderId: "1070011012058",
-    appId: "1:1070011012058:web:86901dcb4131f8e01766e3",
-    measurementId: "G-7LPVVHRLDM"
-};
+    apiKey: "AIzaSyD3VqmKI6fqKS6e3pWqxfIQKgB7rBYpVY0",
+    authDomain: "tinder-afad3.firebaseapp.com",
+    projectId: "tinder-afad3",
+    storageBucket: "tinder-afad3.firebasestorage.app",
+    messagingSenderId: "337199592478",
+    appId: "1:337199592478:web:aa3b8390d87d37a18a2a0f",
+    measurementId: "G-CX1R5P61X3"
+  };
 const firebaseApp = firebase.initializeApp(firebaseConfig);
 const database = firebaseApp.firestore();
 

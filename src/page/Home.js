@@ -14,12 +14,14 @@ const Home = () => {
 
   useEffect(() => {
     const unsubscribe = database.collection('user-data').onSnapshot(snapshot => {
+      console.log(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })))
       setData(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
       setLoading(false);
     });
     return unsubscribe;
   }, [])
 
+  useEffect(() => { console.log(data) })
   useEffect(() => {
     dispatch(updateCurrentPersonData(data.slice().map(item => item.id).reverse()[currentPerson]));
   }, [data, currentPerson, dispatch]);

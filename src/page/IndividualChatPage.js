@@ -136,12 +136,12 @@ const IndividualChatPage = () => {
   };
 
   return (
-    <div className='w-full h-[60%] m-auto -mt-[10px]'>
+    <div className='w-full h-[60%] m-auto '>
       <div className='w-full h-full relative'>
 
-        <div className='relative w-full h-[12%] flex justify-start items-center rounded-t-[10px] gap-[50px] py-[10px] items-cent pl-[20px] screen1:pl-[50px] bg-gray-600'>
-          <img src={profile} className='rounded-full w-[35px] h-[35px] screen1:w-[52px] screen1:h-[52px]' />
-          <p className='select-none text-white text-[17px] screen1:text-[22px]'>{name}</p>
+        <div className='relative w-full h-[16%] screen1:h-[20%] flex justify-start items-center rounded-t-[10px] gap-[50px] py-[10px] items-cent pl-[20px] screen1:pl-[50px] bg-gray-600'>
+          <img src={profile} className='rounded-full w-[45px] h-[45px] screen1:w-[60px] screen1:h-[60px]' />
+          <p className='select-none text-white text-[17px] font-[600] screen1:text-[24px]'>{name}</p>
           {
             (recordingIcon || cameraOpen) &&
             <img src='https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExZHk2dHg5YjIxbXZkZXJrdDd6ZnNpbXg4eGlrOG03Z29jeWQ5NjNiayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/HhGPj1bAjIuNAVUFmj/giphy.webp' className='w-[50px] select-none absolute right-5' />
@@ -203,7 +203,7 @@ const IndividualChatPage = () => {
         </div>
 
         <div className='w-full text-white flex items-center justify-between px-[10px] pb-[20px] pt-[15px] bg-black rounded-b-[10px]'>
-          <input type='text' value={`${sendMesDis ? '' : `${sendMessage}`}`} placeholder='enter the message...' className='text-[18px] w-[68%] screen1:w-[76%] screen2:w-[82%] focus-none bg-[#313131] py-2 px-3 rounded-lg outline-none border-none' onChange={sendMes} />
+          <input type='text' value={`${sendMesDis ? '' : `${sendMessage}`}`} placeholder='enter the message...' className='text-[18px] w-[68%] screen1:w-[76%] screen2:w-[82%] focus-none max-w-[500px] screen1:ml-5 ml-2 bg-[#313131] py-2 px-3 rounded-lg outline-none border-none' onChange={sendMes} />
           <div className='text-[23px] screen2:text-[25px] flex justify-between item-center gap-[12px]'>
             <IoCamera className='cursor-pointer' onClick={() => { handleCameraClick(); setShowAudioControls(false); setAttachmentDisplay(false) }} />
             <IoAttachSharp
@@ -225,7 +225,7 @@ const IndividualChatPage = () => {
 
         {
           attachmentDysplay &&
-          <div className='flex justify-evenly items-center text-[25px] text-white absolute w-[150px] h-[50px] screen1:w-[200px] bg-[#313131] rounded-lg -bottom-[90px] right-5  screen1:right-5'>
+          <div className='flex justify-evenly items-center text-[25px] text-white absolute w-[150px] h-[50px] screen1:w-[200px] bg-[#313131] rounded-lg -bottom-[130px] right-5  screen1:right-5'>
             <label htmlFor="file-upload" className='cursor-pointer'>
               <IoIosDocument aria-label="Upload document" />
               <input id="file-upload" type='file' className='hidden' onChange={handleFileChange} />
@@ -241,7 +241,7 @@ const IndividualChatPage = () => {
         {/* camera UI */}
 
         {cameraOpen && (
-          <div className='absolute top-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-50'>
+          <div className='absolute top-0 pt-[200px] left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-50'>
             <div className='flex flex-col justify-center items-center relative'>
 
               <button className='absolute z-[100] top-3 right-12 screen1:right-20 cursor-pointer' onClick={(e) => {
@@ -254,7 +254,7 @@ const IndividualChatPage = () => {
                 setImageCapture(null);
                 setCameraOpen(false);
               }}>
-                <RxCross2 className='text-[20px] text-black' />
+                <RxCross2 className='text-[20px] bg-black text-white rounded-full w-[25px] h-[25px]' />
               </button>
 
               {imageCapture ? (
@@ -292,18 +292,30 @@ const IndividualChatPage = () => {
         {/* audio recording - UI */}
 
         {showAudioControls && (
-          <div className={`flex flex-col justify-center items-center gap-2 text-white absolute w-[180px] h-[180px] screen1:w-[200px] bg-[#313131] rounded-lg -bottom-[120px] right-5`}>
+          <div className={`text-white absolute w-[180px] h-[180px] screen1:w-[200px] bg-[#313131] rounded-lg -bottom-[120px] right-5 overflow-y-auto`}>
             <RxCross2 className='absolute screen1:top-2 top-1 right-1 screen1:right-2 cursor-pointer' onClick={() => { setAudioUrl(null); setShowAudioControls(false) }} />
-            <button className='bg-black text-[14px] text-white font-bold py-2 px-4 rounded' onClick={() => { handleStartRecording(); setRecordingIcon(true) }}>Start Recording</button>
-            <button className='bg-black text-[14px] text-white font-bold py-2 px-4 rounded' onClick={() => {
-              handleStopRecording();
-              setRecordingIcon(false)
-            }}>Stop Recording</button>
-            <button className='bg-black text-[14px] text-white font-bold py-2 px-4 rounded' onClick={() => {
-              handleStopRecording();
-              handleSendRecording();
-              setIsAudioSent(true);
-            }}>Send Recording</button>
+            <div className='flex flex-col justify-center items-center gap-2 pt-8 pb-4'>
+              <button className='bg-black text-[14px] text-white font-bold py-2 px-4 rounded' onClick={() => { handleStartRecording(); setRecordingIcon(true) }}>Start Recording</button>
+              <button className='bg-black text-[14px] text-white font-bold py-2 px-4 rounded' onClick={() => {
+                handleStopRecording();
+                setRecordingIcon(false)
+              }}>Stop Recording</button>
+              <button className='bg-black text-[14px] text-white font-bold py-2 px-4 rounded' onClick={() => {
+                handleStopRecording();
+                handleSendRecording();
+                setIsAudioSent(true);
+              }}>Send Recording</button>
+
+              {/* Render the audio player if audioUrl is available */}
+              {audioUrl && (
+                <div className='mt-2'>
+                  <audio className='h-[28px] w-[160px] screen1:w-[180px]' controls controlsList="nodownload" src={audioUrl} />
+                </div>
+              )}
+
+            </div>
+
+
           </div>
         )}
 
